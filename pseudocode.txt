@@ -1,1 +1,5 @@
-..
+GET computer choice by writing a function to randomly return either rock,paper or scissors. ✅
+GET human choice by writing a function to return any of rock papaer or scissors chosen by the human. ✅
+CREATE two variables for the human and the computer to keep track of the score.✅
+CREATE  a function to show round winner between the computer and the human and increment the human or computer score based on the winner of the round.✅
+CREATE  a function to display the overall winner after five rounds. 
