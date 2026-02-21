@@ -39,8 +39,15 @@ const scoreBoard = document.querySelector("#score");
 
  const winner = document.querySelector("#winner");
 
+function updateScore() {
+  scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+}
+
+let gameDone = false;
 
 function playRound(humanChoice,computerChoice) {
+  if (gameDone) return;
+  
    if(humanChoice === computerChoice) {
       console.log("It's a tie!");
       
@@ -48,37 +55,37 @@ function playRound(humanChoice,computerChoice) {
     else if (humanChoice === "paper" && computerChoice === "rock") {
       humanScore++;
     console.log("paper beats rock. You win!");
-     scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+     updateScore();
     
   } 
   else if (humanChoice === "rock" && computerChoice === "paper") {
     computerScore++;
     console.log("paper beats rock. Computer wins!");
-     scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+     updateScore();
     
   }
   else if(humanChoice === "rock" && computerChoice === "scissors") {
     humanScore++;
     console.log("rock beats scissors. You win!");
-     scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+     updateScore();
     
   }
   else if(humanChoice === "scissors" && computerChoice === "rock") {
     computerScore++;
     console.log("rock beats scissors. Computer wins!");
-     scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+     updateScore();
 
   } 
   else if(humanChoice === "scissors" && computerChoice === "paper") {
     humanScore++;
     console.log("scissors beats paper. You win!");
-     scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+     updateScore();
   
   } 
   else {
     computerScore++;
     console.log("scissors beats paper. Computer wins!");
-     scoreBoard.textContent = `Human : ${humanScore} | Computer : ${computerScore}`;
+     updateScore();
   }
    if (humanScore === 5 || computerScore === 5) {
     if (humanScore === 5) {
@@ -86,8 +93,19 @@ function playRound(humanChoice,computerChoice) {
     } else {
       winner.textContent = "computer won"
     }
+    gameDone = true;
    }
 }
+function restart() {
+  humanScore = 0;
+  computerScore = 0;
+  winner.textContent = "";
+  updateScore();
+}
+const restartGame = document.querySelector("#restart");
+restartGame.addEventListener("click", () => {
+  restart();
+})
 
  
 
